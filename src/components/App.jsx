@@ -8,14 +8,14 @@ function App() {
 
   // 1. FETCH PLANTS ON LOAD - for AllPlants.test
   useEffect(() => {
-    fetch("http://localhost:3000/plants")
+    fetch("http://localhost:6001/plants")
       .then((res) => res.json())
       .then((data) => setPlants(data));
   }, []);
 
   // 2. ADD NEW PLANT - for CreatePlant.test
   function handleAddPlant(newPlant) {
-    fetch("http://localhost:3000/plants", {
+    fetch("http://localhost:6001/plants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

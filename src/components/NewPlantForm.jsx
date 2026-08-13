@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 function NewPlantForm({ onAddPlant }) {
   const [formData, setFormData] = useState({
-    name: "",
-    image: "",
-    price: "",
-  });
+  name: "",
+  image: "",
+  price: "", // keep as string
+});
 
   function handleChange(e) {
     setFormData({
@@ -15,15 +15,10 @@ function NewPlantForm({ onAddPlant }) {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    const newPlant = {
-      ...formData,
-      price: parseFloat(formData.price),
-      isSoldOut: false,
-    };
-    onAddPlant(newPlant);
-    setFormData({ name: "", image: "", price: "" }); // reset form
-  }
+  e.preventDefault();
+  onAddPlant(formData); // send exactly what user typed. Don't parse price, don't add isSoldOut
+  setFormData({ name: "", image: "", price: "" });
+}
 
   return (
     <div className="new-plant-form">
